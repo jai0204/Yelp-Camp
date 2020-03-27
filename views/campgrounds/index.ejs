@@ -7,10 +7,23 @@
           <p>
             <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
           </p>
+          <form class="form-inline" action="/campgrounds" method="get">
+              <div class="form-group">
+                <input class="form-control" type="text" name="search" placeholder="search campgrounds">
+                <input class="btn btn-default" type="submit" value="Search">
+              </div>
+          </form>
         </div>
       </header>
 
       <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+        <% if (campgrounds.length < 1) { %>
+          <div class="container">
+            <div class="col-md-12 alert alert-danger" role="alert">
+              No campground found for your search! Try again.
+            </div>
+          </div>
+        <% } %>
         <% campgrounds.forEach(function (campground) { %>
           <div class="col-md-3 col-sm-6">
             <div class="thumbnail">
